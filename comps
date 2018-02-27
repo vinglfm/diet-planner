@@ -1,0 +1,17 @@
+Pages:
+- Show current status (FatCalculator);
+- Show Calendar;
+- Show current day;
+- Show product list;
+
+Components:
+- Product (img, name, weight info);
+- Portion (2 fields with number and dimension);
+- Picker (to chose between different dimensions);
+- Calendar (show progress);
+- DayView (show products for day, add new products);
+- Planner (timeline for snacks and lunch);
+- Progress (eaten to all food during a day);
+- Notifier (notify for upcoming snacks and lunch);
+- FatCalculator (fat % according to height and weight);
+- Chart (fat% over timeline);
