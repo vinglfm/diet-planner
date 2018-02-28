@@ -1,7 +1,3 @@
 {
-  "presets": ["react",
-    ["module-resolver", {
-        "root": ["./src"]
-      }]
-    ]
+  "presets": ["react"]
 }
