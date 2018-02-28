@@ -2,7 +2,9 @@
   "name": "diet-planner",
   "version": "1.0.0",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --config webpack.dev.config.js"
+    "build": "./node_modules/.bin/webpack --config webpack.dev.config.js",
+    "start:dev": "webpack-dev-server --progress --color --config webpack.dev.config.js",
+    "test": "jest"
   },
   "description": "An application for planing diet and tracking progress",
   "main": "index.js",
@@ -17,11 +19,12 @@
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.18",
     "css-loader": "^0.28.10",
-    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "style-loader": "^0.20.2",
     "webpack": "^4.0.1",
-    "webpack-cli": "^2.0.9"
+    "webpack-cli": "^2.0.9",
+    "webpack-dev-server": "^3.1.0"
   }
 }

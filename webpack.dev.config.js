@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const config = {
@@ -29,11 +29,12 @@ const config = {
   },
   plugins: [
       new CleanWebpackPlugin(['build']),
-      // new HtmlWebpackPlugin({
-      //   template: path.resolve(__dirname, 'index.html')
-      // }),
-     new webpack.NamedModulesPlugin(),
-     new webpack.HotModuleReplacementPlugin()]
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, 'index.html')
+      }),
+      new webpack.NamedModulesPlugin(),
+      new webpack.HotModuleReplacementPlugin()
+    ]
 };
 
 module.exports = config;
