@@ -1,7 +1,9 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Product} from './src/Product.jsx';
+
 
 ReactDOM.render(
-  <div>Hello diet</div>,
+  <Product title='product' image='temp'></Product>,
   document.getElementById('diet-app')
 );
