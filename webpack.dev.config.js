@@ -19,6 +19,18 @@ const config = {
         include : __dirname,
         exclude : path.join(__dirname, 'server'),
         use : ['babel-loader']
+      },
+      {
+        test: /\.(png|jpg)$/,
+        include: path.resolve(__dirname, 'static'),
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       }
     ]
   },
