@@ -8,12 +8,12 @@ import {expect} from 'chai';
 
 test('render product component with product title and img', () => {
   const product = Enzyme.mount(<Product title='prods' image='img.jpg'/>);
-  
-  const title = product.find('.product_title');
+
+  const title = product.find('.product__title');
   expect(title).to.have.property('length', 1);
   expect(title.props().children).to.equal('prods');
-  
-  const img = product.find('.product_img');
+
+  const img = product.find('.product__image');
   expect(img).to.have.property('length', 1);
   expect(img.props().src).to.equal('img.jpg');
 });

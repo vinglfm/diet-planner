@@ -26,6 +26,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "jest": "^22.4.2",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "style-loader": "^0.20.2",

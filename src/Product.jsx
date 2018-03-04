@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class Product extends React.Component {
   constructor(props) {
@@ -7,10 +8,15 @@ export class Product extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className='product_title'>{this.props.title}</div>
-        <img alt='product image' src={this.props.image} className='product_img'/>
+      <div className='product'>
+        <div className='product__title'>{this.props.title}</div>
+        <img alt='product image' src={this.props.image} className='product__image'/>
       </div>
     );
   }
 }
+
+Product.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired
+};
