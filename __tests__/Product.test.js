@@ -1,5 +1,5 @@
 import React from 'react';
-import {Product} from '../src/Product/Product.jsx';
+import {Product} from '../src/Product';
 
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
