@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import s from './product.scss';
 
 export class Product extends React.Component {
   constructor(props) {
@@ -9,8 +10,8 @@ export class Product extends React.Component {
   render() {
     return (
       <div className='product'>
-        <div className='product__title'>{this.props.title}</div>
         <img alt='product image' src={this.props.image} className='product__image'/>
+        <div className='product__title'>{this.props.title}</div>
       </div>
     );
   }

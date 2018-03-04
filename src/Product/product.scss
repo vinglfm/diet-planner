@@ -1,0 +1,12 @@
+.product {
+  display: block;
+
+  &__title {
+    font-family: cursive;
+  }
+
+  &__image {
+    background: green;
+    border-radius: 50%;
+  }
+}
