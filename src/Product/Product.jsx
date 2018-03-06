@@ -9,10 +9,10 @@ export class Product extends React.Component {
 
   render() {
     return (
-      <div className='product'>
+      <figure className='product'>
         <img alt='product image' src={this.props.image} className='product__image'/>
-        <div className='product__title'>{this.props.title}</div>
-      </div>
+        <figcaption className='product__title'>{this.props.title}</figcaption>
+      </figure>
     );
   }
 }

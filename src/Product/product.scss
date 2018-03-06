@@ -1,12 +1,15 @@
 .product {
-  display: block;
+  display: inline-block;
+  text-align: center;  
 
   &__title {
     font-family: cursive;
+    font-size: .8rem;
+    margin-top: -5px;
   }
 
   &__image {
-    background: green;
+    background: black;
     border-radius: 50%;
   }
 }
