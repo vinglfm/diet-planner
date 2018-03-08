@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {App} from './src/App.jsx';
+import {BrowserRouter} from 'react-router-dom';
 
 ReactDOM.render(
-  <App></App>,
+  (<BrowserRouter>
+    <App></App>
+  </BrowserRouter>),
   document.getElementById('diet-app')
 );

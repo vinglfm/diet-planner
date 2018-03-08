@@ -1,0 +1,29 @@
+.navbar {
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: .5rem;
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  &__link {
+    text-decoration: none;
+    font-style: italic;
+    color: #428bca;
+
+    &--right {
+      margin-right: 5px;
+    }
+  }
+
+  &__brand {
+    @extend .navbar__link;
+    float: left;
+  }
+
+  &--right {
+    float: right;
+  }
+}
