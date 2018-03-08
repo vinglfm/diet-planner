@@ -10,7 +10,7 @@ export class Product extends Component {
   render() {
     return (
       <figure className='product'>
-        <img alt='product image' src={this.props.image} className='product__image'/>
+        <img className='product__image' alt='product image' src={this.props.image}/>
         <figcaption className='product__title'>{this.props.title}</figcaption>
       </figure>
     );
