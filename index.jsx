@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Product} from './src/Product';
-import fruits from './static/fruits.png';
+import {App} from './src/App.jsx';
 
 ReactDOM.render(
-  <Product title='fruits' image={fruits}></Product>,
+  <App></App>,
   document.getElementById('diet-app')
 );

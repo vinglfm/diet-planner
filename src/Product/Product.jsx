@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import s from './product.scss';
 
-export class Product extends React.Component {
+export class Product extends Component {
   constructor(props) {
     super(props);
   }
