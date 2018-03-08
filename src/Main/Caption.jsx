@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import captionImg from '../../static/main_vegetables.jpg';
+import captionImg from '../../static/main_caption.jpg';
 import s from './main.scss';
 
 const captionStyle = {
