@@ -20,7 +20,10 @@ export class SignUpModal extends Component {
   }
 
   signUp() {
-    console.log('signUp');
+    console.log(this.refs.email.value);
+    console.log(this.refs.password.value);
+    console.log(this.refs.firstName.value);
+    console.log(this.refs.lastName.value);
   }
 
   render() {
@@ -31,20 +34,19 @@ export class SignUpModal extends Component {
         style={signUpModalStyle}
         appElement={document.getElementById('diet-app')}>
         <div className='modal__header'>Sign Up</div>
-        <hr class="modal__divider"/>
+        <hr className="modal__divider"/>
         <form className='modal__form' name='signUpForm' onSubmit={this.signUp} role='form'>
           <label className='modal__form__label'>Email<span className='modal__form__label-required'>*</span></label>
-          <input className='modal__form__input' type='email' name='userName'/>
+          <input className='modal__form__input' type='email' ref='email'/>
           <label className='modal__form__label'>Password<span className='modal__form__label-required'>*</span></label>
-          <input className='modal__form__input' type='password' name='password' placeholder='Password' minLength='8' maxLength='16'/>
+          <input className='modal__form__input' type='password' ref='password' placeholder='Password' minLength='8' maxLength='16'/>
           <label className='modal__form__label'>Full Name</label>
-          <input className='modal__form__input-small' type='text' name='firstName' placeholder='First'/>&nbsp;
-          <input className='modal__form__input-small' type='text' name='lastName' placeholder='Last'/>
+          <input className='modal__form__input-small' type='text' ref='firstName' placeholder='First'/>&nbsp;
+          <input className='modal__form__input-small' type='text' ref='lastName' placeholder='Last'/>
           <div className='modal__form__group'>
             <input className='modal__form__group__submit' type='submit' value='Create Account'/>
           </div>
         </form>
-
       </Modal>
     );
   }
