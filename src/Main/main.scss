@@ -1,7 +1,21 @@
 .main {
   &__button {
     cursor: pointer;
+    display: inline-block;
+    background: #4B99AD;
+    font-style: italic;
+    border-radius: 5px;
+    // color: #ECECEA;
+    padding: 6px 12px 6px 12px;
+
+    &:focus {
+      background: #4691A4;
+      box-shadow: none;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+    }
   }
+
   &__caption {
     position: relative;
     text-align: center;
@@ -9,6 +23,11 @@
     background-repeat: no-repeat;
     background-position: center 35%;
     height: 400px;
+
+    &__description {
+      color: black;
+      margin-top: 30px;
+    }
 
     &__layout {
       color: #fff;
@@ -28,7 +47,7 @@
       }
 
       &__auth {
-        margin-top: 6%;
+        margin-top: 30px;
 
         &__text {
           font-style: italic;
