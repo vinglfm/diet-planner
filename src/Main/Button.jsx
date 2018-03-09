@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 
 export class Button extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
-      <button>Sign up</button>
+      <button class='main__button' onClick={this.props.click}>Sign up</button>
     )
   }
 }
