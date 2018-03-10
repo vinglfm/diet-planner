@@ -2,17 +2,16 @@
   &__button {
     cursor: pointer;
     display: inline-block;
-    background: #4B99AD;
+    background: #3b5998;
     font-style: italic;
-    border-radius: 5px;
-    // color: #ECECEA;
-    padding: 6px 12px 6px 12px;
+    border-radius: .25rem;
+    padding: .6rem .8rem;
 
-    &:focus {
-      background: #4691A4;
-      box-shadow: none;
-      -moz-box-shadow: none;
-      -webkit-box-shadow: none;
+    &-fb {
+      @extend .main__button;
+      color: white;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      margin: .25rem;
     }
   }
 
@@ -132,18 +131,12 @@
       padding-top: 10px;
 
       &__submit {
-        background: #4B99AD;
-        border: none;
+        background: #3b5998;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: .25rem;
         color: #fff;
         padding: 6px 12px 6px 12px;
         cursor: pointer;
-
-        &:focus {
-          background: #4691A4;
-          box-shadow: none;
-          -moz-box-shadow: none;
-          -webkit-box-shadow: none;
-        }
       }
     }
   }

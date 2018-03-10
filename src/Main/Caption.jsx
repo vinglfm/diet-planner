@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
-import {FacebookButton} from './FacebookButton.jsx';
+import FacebookLogin from 'react-facebook-login';
 import {SignUpModal} from './SignUpModal.jsx';
 import {Button} from './Button.jsx';
 import captionImg from '../../static/main_caption.jpg';
@@ -8,6 +8,10 @@ import s from './main.scss';
 
 const captionStyle = {
   backgroundImage: `url(${captionImg})`
+};
+
+const facebookResponse = (resp) => {
+  console.log(resp);
 };
 
 export class Caption extends Component {
@@ -37,6 +41,12 @@ export class Caption extends Component {
           <div className='main__caption__layout__header'>Loose your weight with diet planner</div>
           <div className='main__caption__layout__subtext'>The fastest, easiest way to your dream body.</div>
           <div className='main__caption__layout__auth'>
+            <FacebookLogin
+              appId='1817436878556969'
+              autoLoad={false}
+              fields='name,email'
+              cssClass='main__button-fb'
+              callback={facebookResponse}/>
             <Button click={this.openAuthModal}/>
             <div className='main__caption__layout__auth__text'>Already have account? <a>Log in</a></div>
           </div>
