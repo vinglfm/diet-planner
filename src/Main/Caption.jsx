@@ -7,10 +7,6 @@ import {Button} from './Button.jsx';
 import captionImg from '../../static/main_caption.jpg';
 import s from './main.scss';
 
-const captionStyle = {
-  backgroundImage: `url(${captionImg})`
-};
-
 const facebookResponse = (resp) => {
   console.log(resp);
 };
@@ -47,6 +43,10 @@ export class Caption extends Component {
   }
 
   render() {
+    const captionStyle = {
+      backgroundImage: `url(${captionImg})`
+    };
+
     return (
       <div className='main__caption' style={captionStyle}>
         <div className='main__caption__layout'>
