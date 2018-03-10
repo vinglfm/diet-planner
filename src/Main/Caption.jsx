@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Modal from 'react-modal';
 import FacebookLogin from 'react-facebook-login';
 import {SignUpModal} from './SignUpModal.jsx';
+import {LogInModal} from './LogInModal.jsx';
 import {Button} from './Button.jsx';
 import captionImg from '../../static/main_caption.jpg';
 import s from './main.scss';
@@ -19,19 +20,30 @@ export class Caption extends Component {
     super(props);
 
     this.state = {
-      authModalIsOpen: false
+      signUpModalIsOpen: false,
+      logInModalIsOpen: false
     };
 
-    this.openAuthModal = this.openAuthModal.bind(this);
-    this.closeAuthModal = this.closeAuthModal.bind(this);
+    this.openSignUpModal = this.openSignUpModal.bind(this);
+    this.closeSignUpModal = this.closeSignUpModal.bind(this);
+    this.openLogInModal = this.openLogInModal.bind(this);
+    this.closeLogInModal = this.closeLogInModal.bind(this);
   }
 
-  openAuthModal() {
-    this.setState({authModalIsOpen: true});
+  openSignUpModal() {
+    this.setState({signUpModalIsOpen: true});
   }
 
-  closeAuthModal() {
-    this.setState({authModalIsOpen: false});
+  closeSignUpModal() {
+    this.setState({signUpModalIsOpen: false});
+  }
+
+  openLogInModal() {
+    this.setState({logInModalIsOpen: true});
+  }
+
+  closeLogInModal() {
+    this.setState({logInModalIsOpen: false});
   }
 
   render() {
@@ -47,10 +59,11 @@ export class Caption extends Component {
               fields='name,email'
               cssClass='main__button-fb'
               callback={facebookResponse}/>
-            <Button click={this.openAuthModal}/>
-            <div className='main__caption__layout__auth__text'>Already have account? <a>Log in</a></div>
+            <Button click={this.openSignUpModal}/>
+            <div className='main__caption__layout__auth__text'>Already have account? <a onClick={this.openLogInModal}>Log in</a></div>
           </div>
-        <SignUpModal isOpen={this.state.authModalIsOpen} close={this.closeAuthModal}/>
+        <SignUpModal isOpen={this.state.signUpModalIsOpen} close={this.closeSignUpModal}/>
+        <LogInModal isOpen={this.state.logInModalIsOpen} close={this.closeLogInModal}/>
         <p className="main__caption__description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
