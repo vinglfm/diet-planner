@@ -6,6 +6,7 @@ import {
 } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
 import s from './diet-planner.scss';
 import dietPlannerImg from '../../static/diet_planner.jpg';
 
@@ -28,19 +29,33 @@ export class DietPlanner extends Component {
       stepIndex: stepIndex + 1,
       finished: stepIndex >= 2,
     });
-  };
+  }
 
   handlePrev() {
     const {stepIndex} = this.state;
     if (stepIndex > 0) {
       this.setState({stepIndex: stepIndex - 1});
     }
-  };
+  }
 
   getStepContent(stepIndex) {
+    const textFieldLabelStyle = {
+      color: 'white'
+    };
+
     switch (stepIndex) {
       case 0:
-        return <div>'Set your profile info'</div>;
+        return (<div>
+          <TextField
+            textareaStyle={textFieldLabelStyle}
+            floatingLabelStyle={textFieldLabelStyle}
+            floatingLabelText='Enter your height:'/>
+          <br/>
+          <TextField
+            textareaStyle={textFieldLabelStyle}
+            floatingLabelStyle={textFieldLabelStyle}
+            floatingLabelText='Enter your weight:'/>
+        </div>);
       case 1:
         return 'Specify your goals';
       case 2:
