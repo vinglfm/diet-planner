@@ -7,6 +7,8 @@ import {
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import s from './diet-planner.scss';
 import dietPlannerImg from '../../static/diet_planner.jpg';
 
@@ -17,10 +19,12 @@ export class DietPlanner extends Component {
     this.state = {
       finished: false,
       stepIndex: 0,
+      gender: 'none'
     };
 
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleNext() {
@@ -38,6 +42,10 @@ export class DietPlanner extends Component {
     }
   }
 
+  handleChange (event, index, value) {
+    this.setState({gender: value});
+  }
+
   getStepContent(stepIndex) {
     const textFieldLabelStyle = {
       color: 'white'
@@ -45,7 +53,17 @@ export class DietPlanner extends Component {
 
     switch (stepIndex) {
       case 0:
-        return (<div>
+        return (<div className='diet__planner__content__step'>
+          <SelectField style={{textAlign: 'left'}}
+            floatingLabelText="Your gender?"
+            floatingLabelStyle={textFieldLabelStyle}
+            value={this.state.gender}
+            onChange={this.handleChange}>
+            <MenuItem value={'none'} primaryText="Not Selected" />
+            <MenuItem value={'Male'} primaryText="Male" />
+            <MenuItem value={'Female'} primaryText="Female" />
+          </SelectField>
+          <br/>
           <TextField
             textareaStyle={textFieldLabelStyle}
             floatingLabelStyle={textFieldLabelStyle}
