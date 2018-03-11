@@ -9,9 +9,13 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import Subheader from 'material-ui/Subheader';
+import {GridList} from 'material-ui/GridList';
+import {Product} from '../Product';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import s from './diet-planner.scss';
 import dietPlannerImg from '../../static/diet_planner.jpg';
+import fruits from '../../static/fruits.png';
 
 
 //TODO: separate to different component
@@ -21,7 +25,7 @@ export class DietPlanner extends Component {
 
     this.state = {
       finished: false,
-      stepIndex: 0,
+      stepIndex: 2,
       gender: 'none',
       expectedWeightLoss: '-5'
     };
@@ -56,31 +60,65 @@ export class DietPlanner extends Component {
   }
 
   getStepContent(stepIndex) {
-    const textFieldLabelStyle = {
+    const whiteStyle = {
       color: 'white'
     };
+
+    const tilesData = [{
+      key: '1',
+      title: 'Breakfast'
+    },
+    {
+      key: '2',
+      title: 'Tasty burger'
+    },
+    {
+      key: '3',
+      title: 'Camera'
+    },
+    {
+      key: '4',
+      title: 'Morning'
+    },
+    {
+      key: '5',
+      title: 'Breakfast'
+    },
+    {
+      key: '6',
+      title: 'Tasty burger'
+    },
+    {
+      key: '7',
+      title: 'Camera'
+    },
+    {
+      key: '8',
+      title: 'Morning'
+    }
+  ];
 
     switch (stepIndex) {
       case 0:
         return (<div className='diet__planner__content__step'>
           <SelectField style={{textAlign: 'left'}}
-            floatingLabelText="Your gender?"
-            floatingLabelStyle={textFieldLabelStyle}
+            floatingLabelText='Your gender?'
+            floatingLabelStyle={whiteStyle}
             value={this.state.gender}
             onChange={this.handleChange}>
-            <MenuItem value={'none'} primaryText="Not Selected" />
-            <MenuItem value={'Male'} primaryText="Male" />
-            <MenuItem value={'Female'} primaryText="Female" />
+            <MenuItem value={'none'} primaryText='Not Selected' />
+            <MenuItem value={'Male'} primaryText='Male' />
+            <MenuItem value={'Female'} primaryText='Female' />
           </SelectField>
           <br/>
           <TextField
-            textareaStyle={textFieldLabelStyle}
-            floatingLabelStyle={textFieldLabelStyle}
+            textareaStyle={whiteStyle}
+            floatingLabelStyle={whiteStyle}
             floatingLabelText='Enter your height:'/>
           <br/>
           <TextField
-            textareaStyle={textFieldLabelStyle}
-            floatingLabelStyle={textFieldLabelStyle}
+            textareaStyle={whiteStyle}
+            floatingLabelStyle={whiteStyle}
             floatingLabelText='Enter your weight:'/>
         </div>);
       case 1:
@@ -88,21 +126,21 @@ export class DietPlanner extends Component {
         <Tabs style={{opacity: 1}}
           value={this.state.expectedWeightLoss}
           onChange={this.handleWeightLossChange}>
-            <Tab label="-5 kg" value="-5" style={{color: 'white'}}>
+            <Tab label='-5 kg' value='-5' style={whiteStyle}>
               <div>
                 <p>
                   Page with advises and budges to specify(your active status, some other)
                 </p>
               </div>
             </Tab>
-            <Tab label="-10 kg" value="-10" style={{color: 'white'}}>
+            <Tab label='-10 kg' value='-10' style={whiteStyle}>
               <div>
                 <p>
                   Page with advises and budges to specify(your active status, some other)
                 </p>
               </div>
             </Tab>
-            <Tab label="-15 kg" value="-15" style={{color: 'white'}}>
+            <Tab label='-15 kg' value='-15' style={whiteStyle}>
               <div>
                 <p>
                   Page with advises and budges to specify(your active status, some other)
@@ -112,7 +150,14 @@ export class DietPlanner extends Component {
           </Tabs>
         </div>);
       case 2:
-        return 'Choose your preferable products';
+        return (<div className='diet__planner__content__step'>
+          <GridList cols={8} cellHeight={80}>
+            <Subheader style={whiteStyle}>Products</Subheader>
+            {tilesData.map((tile) => (
+              <Product key={tile.key} image={fruits} title={tile.title}/>
+            ))}
+          </GridList>
+        </div>);
       default:
         return 'Please, reset your profile';
     }
@@ -140,8 +185,7 @@ export class DietPlanner extends Component {
         <div>
           {finished ? (
             <p>
-              <a href="#"
-                onClick={(event) => {
+              <a href='#' onClick={(event) => {
                   event.preventDefault();
                   this.setState({stepIndex: 0, finished: false});
                 }}>
