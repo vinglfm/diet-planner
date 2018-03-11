@@ -20,16 +20,15 @@
   }
 
   &__content {
-    background-color: black;
     position: absolute;
     top: 30%;
     left: 25%;
     width: 50%;
     border-radius: 1rem;
-    opacity: .8;
+    background: rgba(0, 0, 0, .8);
 
     &__step {
-
+      color: white;
     }
   }
 }

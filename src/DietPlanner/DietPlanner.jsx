@@ -9,9 +9,12 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import {Tabs, Tab} from 'material-ui/Tabs';
 import s from './diet-planner.scss';
 import dietPlannerImg from '../../static/diet_planner.jpg';
 
+
+//TODO: separate to different component
 export class DietPlanner extends Component {
   constructor(props) {
     super(props);
@@ -19,12 +22,14 @@ export class DietPlanner extends Component {
     this.state = {
       finished: false,
       stepIndex: 0,
-      gender: 'none'
+      gender: 'none',
+      expectedWeightLoss: '-5'
     };
 
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleWeightLossChange = this.handleWeightLossChange.bind(this);
   }
 
   handleNext() {
@@ -44,6 +49,10 @@ export class DietPlanner extends Component {
 
   handleChange (event, index, value) {
     this.setState({gender: value});
+  }
+
+  handleWeightLossChange (event, index, tab) {
+    this.setState({expectedWeightLoss: tab.props.value});
   }
 
   getStepContent(stepIndex) {
@@ -75,7 +84,33 @@ export class DietPlanner extends Component {
             floatingLabelText='Enter your weight:'/>
         </div>);
       case 1:
-        return 'Specify your goals';
+        return (<div className='diet__planner__content__step'>
+        <Tabs style={{opacity: 1}}
+          value={this.state.expectedWeightLoss}
+          onChange={this.handleWeightLossChange}>
+            <Tab label="-5 kg" value="-5" style={{color: 'white'}}>
+              <div>
+                <p>
+                  Page with advises and budges to specify(your active status, some other)
+                </p>
+              </div>
+            </Tab>
+            <Tab label="-10 kg" value="-10" style={{color: 'white'}}>
+              <div>
+                <p>
+                  Page with advises and budges to specify(your active status, some other)
+                </p>
+              </div>
+            </Tab>
+            <Tab label="-15 kg" value="-15" style={{color: 'white'}}>
+              <div>
+                <p>
+                  Page with advises and budges to specify(your active status, some other)
+                </p>
+              </div>
+            </Tab>
+          </Tabs>
+        </div>);
       case 2:
         return 'Choose your preferable products';
       default:
