@@ -12,14 +12,20 @@ import {Products} from './Products.jsx';
 import s from './diet-planner.scss';
 import dietPlannerImg from '../../static/diet_planner.jpg';
 
+const stepLabel = {color: 'white', fontWeight: 'bold'};
+const dietPlannerStyle = {
+  backgroundImage: `url(${dietPlannerImg})`
+};
+
 export class DietPlanner extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      finished: false,
-      stepIndex: 2
+      stepIndex: 0
     };
+
+    this.childs = [<ProfileInfo/>, <Diets/>, <Products/>];
 
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
@@ -27,10 +33,13 @@ export class DietPlanner extends Component {
 
   handleNext() {
     const {stepIndex} = this.state;
-    this.setState({
-      stepIndex: stepIndex + 1,
-      finished: stepIndex >= 2,
-    });
+    if(stepIndex >= 2) {
+      //TODO: move to next component
+    } else {
+      this.setState({
+        stepIndex: stepIndex + 1
+      });
+    }
   }
 
   handlePrev() {
@@ -40,68 +49,38 @@ export class DietPlanner extends Component {
     }
   }
 
-  getStepContent(stepIndex) {
-    switch (stepIndex) {
-      case 0:
-        return <ProfileInfo/>
-      case 1:
-        return <Diets/>
-      case 2:
-        return <Products/>
-      default:
-        return 'Please, reset your profile';
-    }
-  }
   render() {
     const {finished, stepIndex} = this.state;
-    const dietPlannerStyle = {
-      backgroundImage: `url(${dietPlannerImg})`
-    };
-    const stepLabelClass = {color: 'white', fontWeight: 'bold'};
 
     return (
       <div className='diet__planner' style={dietPlannerStyle}>
         <Stepper activeStep={stepIndex}>
           <Step>
-            <StepLabel style={stepLabelClass}>Set your profile info</StepLabel>
+            <StepLabel style={stepLabel}>Set your profile info</StepLabel>
           </Step>
           <Step>
-            <StepLabel style={stepLabelClass}>Specify your goals</StepLabel>
+            <StepLabel style={stepLabel}>Specify your goals</StepLabel>
           </Step>
           <Step>
-            <StepLabel style={stepLabelClass}>Choose your preferable products</StepLabel>
+            <StepLabel style={stepLabel}>Choose your preferable products</StepLabel>
           </Step>
         </Stepper>
-        <div>
-          {finished ? (
-            <p>
-              <a href='#' onClick={(event) => {
-                  event.preventDefault();
-                  this.setState({stepIndex: 0, finished: false});
-                }}>
-                Click here
-              </a> to reset the example.
-            </p>
-          ) : (
-            <div>
-              <div className='diet__planner__content'>
-                {this.getStepContent(stepIndex)}
-              </div>
-              <div className='diet__planner__nav__group'>
-                <FlatButton
-                  label='Back'
-                  disabled={stepIndex === 0}
-                  onClick={this.handlePrev}
-                  style={{marginRight: 12}}
-                />
-                <RaisedButton
-                  label={stepIndex === 2 ? 'Finish' : 'Next'}
-                  primary={true}
-                  onClick={this.handleNext}
-                />
-              </div>
-            </div>
-          )}
+        <div className='diet__planner__content'>
+          {this.childs[stepIndex]}
+        </div>
+        <div className='diet__planner__nav__group'>
+          <FlatButton
+            label='Back'
+            disabled={stepIndex === 0}
+            onClick={this.handlePrev}
+            style={{marginRight: 12}}
+          />
+          <RaisedButton
+            label='Next'
+            primary={true}
+            disabled={false}
+            onClick={this.handleNext}
+          />
         </div>
       </div>
     );

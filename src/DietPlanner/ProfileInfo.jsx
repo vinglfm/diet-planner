@@ -36,11 +36,13 @@ export class ProfileInfo extends Component {
       </SelectField>
       <br/>
       <TextField
+        type='number'
         textareaStyle={whiteStyle}
         floatingLabelStyle={whiteStyle}
         floatingLabelText='Enter your height:'/>
       <br/>
       <TextField
+        type='number'
         textareaStyle={whiteStyle}
         floatingLabelStyle={whiteStyle}
         floatingLabelText='Enter your weight:'/>
