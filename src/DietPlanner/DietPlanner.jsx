@@ -22,13 +22,15 @@ export class DietPlanner extends Component {
     super(props);
 
     this.state = {
-      stepIndex: 0
+      stepIndex: 0,
+      nextStepDisabled: true
     };
-
-    this.childs = [<ProfileInfo/>, <Diets/>, <Products/>];
 
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
+    this.onValidate = this.onValidate.bind(this);
+
+    this.childs = [<ProfileInfo onValidate={this.onValidate}/>, <Diets/>, <Products/>];
   }
 
   handleNext() {
@@ -37,7 +39,8 @@ export class DietPlanner extends Component {
       //TODO: move to next component
     } else {
       this.setState({
-        stepIndex: stepIndex + 1
+        stepIndex: stepIndex + 1,
+        nextStepDisabled: true
       });
     }
   }
@@ -46,6 +49,12 @@ export class DietPlanner extends Component {
     const {stepIndex} = this.state;
     if (stepIndex > 0) {
       this.setState({stepIndex: stepIndex - 1});
+    }
+  }
+
+  onValidate(isValid) {
+    if(isValid === this.state.nextStepDisabled) {
+      this.setState({nextStepDisabled: !isValid});
     }
   }
 
@@ -78,7 +87,7 @@ export class DietPlanner extends Component {
           <RaisedButton
             label='Next'
             primary={true}
-            disabled={false}
+            disabled={this.state.nextStepDisabled}
             onClick={this.handleNext}
           />
         </div>
