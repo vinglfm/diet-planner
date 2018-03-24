@@ -22,48 +22,79 @@ export class DietPlanner extends Component {
     super(props);
 
     this.state = {
-      stepIndex: 0,
-      nextStepDisabled: true
+      step: 0,
+      userInfo: {
+        gender: 'none',
+        height: 0,
+        weight: 0
+      },
+      disableNext: true
     };
 
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
-    this.onValidate = this.onValidate.bind(this);
-
-    this.childs = [<ProfileInfo onValidate={this.onValidate}/>, <Diets/>, <Products/>];
+    this.onUpdateInfo = this.onUpdateInfo.bind(this);
+    this.renderChild = this.renderChild.bind(this);
+    this.isDisable = this.isDisable.bind(this);
   }
 
   handleNext() {
-    const {stepIndex} = this.state;
-    if(stepIndex >= 2) {
+    const {step} = this.state;
+    if(step >= 2) {
       //TODO: move to next component
     } else {
       this.setState({
-        stepIndex: stepIndex + 1,
-        nextStepDisabled: true
+        step: step + 1,
+        disableNext: this.isDisable()
       });
     }
   }
 
   handlePrev() {
-    const {stepIndex} = this.state;
-    if (stepIndex > 0) {
-      this.setState({stepIndex: stepIndex - 1});
+    const {step} = this.state;
+    if (step > 0) {
+      this.setState({step: step - 1});
     }
   }
 
-  onValidate(isValid) {
-    if(isValid === this.state.nextStepDisabled) {
-      this.setState({nextStepDisabled: !isValid});
+  onUpdateInfo(userInfo) {
+    this.setState({
+      userInfo: Object.assign(this.state.userInfo, userInfo),
+      disableNext: this.isDisable()
+    });
+  }
+
+  isDisable() {
+    switch(this.state.step) {
+      case 0:
+        return !this.validateUserInfo(this.state.userInfo);
+      default:
+        return false;
+    }
+  }
+
+  validateUserInfo(userInfo) {
+    const {gender, height, weight} = userInfo;
+    return gender !== 'none' && height > 120 && weight > 20;
+  }
+
+  renderChild() {
+    switch(this.state.step) {
+      case 0:
+        return <ProfileInfo userInfo={this.state.userInfo} onUpdate={this.onUpdateInfo}/>;
+      case 1:
+        return <Diets/>;
+      case 2:
+        return <Products/>;
     }
   }
 
   render() {
-    const {finished, stepIndex} = this.state;
+    const {finished, step} = this.state;
 
     return (
       <div className='diet__planner' style={dietPlannerStyle}>
-        <Stepper activeStep={stepIndex}>
+        <Stepper activeStep={step}>
           <Step>
             <StepLabel style={stepLabel}>Set your profile info</StepLabel>
           </Step>
@@ -75,19 +106,19 @@ export class DietPlanner extends Component {
           </Step>
         </Stepper>
         <div className='diet__planner__content'>
-          {this.childs[stepIndex]}
+          {this.renderChild()}
         </div>
         <div className='diet__planner__nav__group'>
           <FlatButton
             label='Back'
-            disabled={stepIndex === 0}
+            disabled={step === 0}
             onClick={this.handlePrev}
             style={{marginRight: 12}}
           />
           <RaisedButton
             label='Next'
             primary={true}
-            disabled={this.state.nextStepDisabled}
+            disabled={this.state.disableNext}
             onClick={this.handleNext}
           />
         </div>
