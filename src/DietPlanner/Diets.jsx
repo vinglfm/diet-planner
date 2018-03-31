@@ -7,14 +7,14 @@ export class Diets extends Component {
     super(props);
 
     this.state = {
-      expectedWeightLoss: '-5'
+      program: '-5'
     };
 
-    this.handleWeightLossChange = this.handleWeightLossChange.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
-  handleWeightLossChange (event, index, tab) {
-    this.setState({expectedWeightLoss: tab.props.value});
+  onChange (event, index, tab) {
+    this.setState({program: tab.props.value});
   }
 
   render() {
@@ -24,27 +24,21 @@ export class Diets extends Component {
 
     return (<div className='diet__planner__content__step'>
     <Tabs style={{opacity: 1}}
-      value={this.state.expectedWeightLoss}
-      onChange={this.handleWeightLossChange}>
+      value={this.state.program}
+      onChange={this.onChange}>
         <Tab label='-5 kg' value='-5' style={whiteStyle}>
-          <div>
-            <p>
-              Page with advises and budges to specify(your active status, some other)
-            </p>
+          <div className='diet__planner__content__step__body'>
+            Lightweight quick program where you can eat whatever you want
           </div>
         </Tab>
         <Tab label='-10 kg' value='-10' style={whiteStyle}>
-          <div>
-            <p>
-              Page with advises and budges to specify(your active status, some other)
-            </p>
+          <div className='diet__planner__content__step__body'>
+            Average on duration and nutrition limitation
           </div>
         </Tab>
         <Tab label='-15 kg' value='-15' style={whiteStyle}>
-          <div>
-            <p>
-              Page with advises and budges to specify(your active status, some other)
-            </p>
+          <div className='diet__planner__content__step__body'>
+            Intense program for the best results 
           </div>
         </Tab>
       </Tabs>

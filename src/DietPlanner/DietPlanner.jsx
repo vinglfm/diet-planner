@@ -24,7 +24,7 @@ class DietPlanner extends Component {
     super(props);
 
     this.state = {
-      step: 0,
+      step: 1,
       disableNext: true
     };
 
@@ -111,7 +111,6 @@ class DietPlanner extends Component {
             label='Back'
             disabled={step === 0}
             onClick={this.handlePrev}
-            style={{marginRight: 12}}
           />
           <RaisedButton
             label='Next'
