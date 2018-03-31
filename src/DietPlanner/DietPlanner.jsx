@@ -7,7 +7,7 @@ import {
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import {connect} from 'react-redux';
-import {updateProfile} from '../reducers/profile.js';
+import {updateProfile} from '../reducers/profileReducer.js';
 import {ProfileInfo} from './ProfileInfo.jsx';
 import {Diets} from './Diets.jsx';
 import {Products} from './Products.jsx';
@@ -127,7 +127,7 @@ class DietPlanner extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.profileReducer.profile
+    profile: state.profile.user
   };
 };
 

@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import profileReducer from './profile.js';
+import profile from './profileReducer.js';
 
 const reducers = combineReducers({
-  profileReducer
+  profile
 });
 
 export default reducers;

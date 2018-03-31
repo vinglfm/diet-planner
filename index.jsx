@@ -4,15 +4,14 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import reducers from './src/reducers';
 
 import {App} from './src/App';
 import DietPlanner from './src/DietPlanner';
 import {BrowserRouter} from 'react-router-dom';
+import store from './src/store';
 
 ReactDOM.render(
-  (<Provider store={createStore(reducers)}>
+  (<Provider store={store}>
     <BrowserRouter>
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
         <DietPlanner/>
