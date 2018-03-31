@@ -5,7 +5,7 @@ import {SignUpModal} from './SignUpModal.jsx';
 import {LogInModal} from './LogInModal.jsx';
 import {Button} from './Button.jsx';
 import captionImg from '../../static/main_caption.jpg';
-import s from './main.scss';
+import './main.scss';
 
 const facebookResponse = (resp) => {
   console.log(resp);

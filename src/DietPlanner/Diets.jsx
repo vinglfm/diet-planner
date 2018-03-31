@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import s from './diet-planner.scss';
+import './diet-planner.scss';
 
 export class Diets extends Component {
   constructor(props) {

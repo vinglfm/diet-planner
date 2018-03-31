@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Product} from '../Product';
 import Subheader from 'material-ui/Subheader';
 import {GridList} from 'material-ui/GridList';
-import s from './diet-planner.scss';
+import './diet-planner.scss';
 import fruits from '../../static/fruits.png';
 
 export class Products extends Component {

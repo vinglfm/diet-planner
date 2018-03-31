@@ -11,7 +11,7 @@ import {updateProfile} from '../reducers/profile.js';
 import {ProfileInfo} from './ProfileInfo.jsx';
 import {Diets} from './Diets.jsx';
 import {Products} from './Products.jsx';
-import s from './diet-planner.scss';
+import './diet-planner.scss';
 import dietPlannerImg from '../../static/diet_planner.jpg';
 
 const stepLabel = {color: 'white', fontWeight: 'bold'};

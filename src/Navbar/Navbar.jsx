@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 const {NavLink} = require('react-router-dom');
-import s from './navbar.scss';
+import './navbar.scss';
 
 export class Navbar extends Component {
   constructor(props) {

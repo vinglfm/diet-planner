@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import s from './product.scss';
+import './product.scss';
 
 export class Product extends Component {
   constructor(props) {
