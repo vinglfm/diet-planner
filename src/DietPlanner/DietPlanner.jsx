@@ -10,7 +10,6 @@ import {connect} from 'react-redux';
 import {updateProfile} from '../reducers/profileReducer.js';
 import {ProfileInfo} from './ProfileInfo.jsx';
 import {Diets} from './Diets.jsx';
-import {Products} from './Products.jsx';
 import './diet-planner.scss';
 import dietPlannerImg from '../../static/diet_planner.jpg';
 
@@ -37,7 +36,7 @@ class DietPlanner extends Component {
 
   handleNext() {
     const {step} = this.state;
-    if(step >= 2) {
+    if(step >= 1) {
       //TODO: move to next component
     } else {
       this.setState({
@@ -77,8 +76,6 @@ class DietPlanner extends Component {
         return <ProfileInfo userInfo={this.props.profile} onUpdate={this.onUpdateInfo}/>;
       case 1:
         return <Diets/>;
-      case 2:
-        return <Products/>;
     }
   }
 
@@ -98,9 +95,6 @@ class DietPlanner extends Component {
           </Step>
           <Step>
             <StepLabel style={stepLabel}>Specify your goals</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel style={stepLabel}>Choose your preferable products</StepLabel>
           </Step>
         </Stepper>
         <div className='diet__planner__content'>
