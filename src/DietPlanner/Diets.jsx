@@ -30,7 +30,7 @@ export class Diets extends Component {
 
     const minus5Tiles = [
       {key: '1', title: 'Breakfast'},{key: '2', title: 'Tasty burger'},{key: '3', title: 'Camera'},{key: '4', title: 'Morning'},
-      {key: '5', title: 'Borning'},{key: '6', title: 'Tasty Spoonger'},{key: '7', title: 'Smoothy'},{key: '8', title: 'Smarpfhy'}];
+      {key: '5', title: 'Borning'},{key: '6', title: 'Tasty Spoonger'},{key: '7', title: 'Smoothy'},{key: '8', title: 'Smarpfhy'},{key: '9', title: 'Smarpfsdy'}];
 
     const minus10Tiles = [
       {key: '1', title: 'Breakfast'},{key: '2', title: 'Huge and tasty fatty burger with carrot'},{key: '3', title: 'Big % tasty smoothy'},{key: '4', title: 'Tasty fatty burger'},
@@ -60,7 +60,7 @@ export class Diets extends Component {
             </GridList>
           </div>
         </Tab>
-        <Tab label='-15 kg' value='-15' style={whiteStyle}>
+        <Tab label='-20 kg' value='-20' style={whiteStyle}>
           <div className='diet__planner__content__step__body'>
             <GridList cols={4} cellHeight={80}>
                 {minus15Tiles.map(tile => (
