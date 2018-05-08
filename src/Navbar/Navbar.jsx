@@ -3,9 +3,6 @@ const {NavLink} = require('react-router-dom');
 import './navbar.scss';
 
 export class Navbar extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (

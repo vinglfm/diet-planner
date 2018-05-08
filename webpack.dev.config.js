@@ -48,7 +48,6 @@ const config = {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'index.html')
       }),
-      new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin()
     ]
 };

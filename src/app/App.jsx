@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
 import {Navbar} from '../Navbar';
 import {Caption} from '../Main/Caption.jsx';
-import s from './app.scss';
+import './app.scss';
 
 export class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>
